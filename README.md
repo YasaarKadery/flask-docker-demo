@@ -1,6 +1,9 @@
 # flask-microservice-demo
 Learning containerization with Flask and Docker
 
+![alt-text](https://i.imgur.com/IGsc97M.gif)
+
+
 # Usage
 
 Build the docker image
@@ -14,5 +17,6 @@ Run the container
 ```
 docker run -dp 5000:5000 flask-login
 ```
+
 
 
