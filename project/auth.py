@@ -2,12 +2,31 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db
+from flask_login import login_user
 
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def login():
     return render_template('login.html')
+
+@auth.route('/login',methods=['POST'])
+def login_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    if request.form.get('remember') is True:
+        remember = True
+    else:
+        remember = False
+    
+    user = User.query.filter_by(email=email).first()
+    
+    if not user or not check_password_hash(user.password, password):
+        flash("Invalid credentials. Please try again.")
+        return redirect(url_for('auth.login'))
+    
+    login_user(user,remember=remember)
+    return redirect(url_for('main.profile'))
 
 @auth.route('/signup')
 def signup():
