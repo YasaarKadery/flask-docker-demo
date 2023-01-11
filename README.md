@@ -1,5 +1,5 @@
-# flask-microservice-demo
-Learning containerization with Flask and Docker
+# Flask / Docker Demo
+Learning user login/sign up implementation in Flask using Flask-Login and Flask-SQLAlchemy libraries and deploying to docker.
 
 ![alt-text](https://i.imgur.com/IGsc97M.gif)
 
